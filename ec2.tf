@@ -3,7 +3,6 @@ resource "aws_instance" "webserver" {
   count                  = var.item_count
   ami                    = var.ami_id
   instance_type          = var.instance_type
-  key_name               = var.key_pair
   availability_zone      = var.availability_zone_names[count.index]
   vpc_security_group_ids = [aws_security_group.webserver-sg.id]
   subnet_id              = aws_subnet.web-subnet[count.index].id
